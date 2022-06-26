@@ -8,9 +8,53 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 ChartJS.register(ChartDataLabels);
 ChartJS.register(...registerables);
 
-const Bubblecharts = ({ datapos, dataneg, options }) => {
+const Bubblecharts = ({ datapos, dataneg }) => {
     const [option, setOption] = useState('1');
-
+    const [positiveAssessmentArray, setPositiveAssessmentArray] = useState([]);
+    const [negativeAssessmentArray, setNegativeAssessmentArray] = useState([]);
+    const [mixedAssessmentArray, setMixedAssessmentArray] = useState([]);
+    const optionsBubble = {
+        scales: {
+            x: {
+                grid: {
+                    display: false,
+                },
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false,
+                },
+            },
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        plugins: {
+            datalabels: {
+                font: {
+                    size: "10px",
+                    weight: "600",
+                },
+                formatter: (value, context) => {
+                    const textArray = value.company.replace(" ", "\n");
+                    return textArray.toString();
+                },
+                color: "black",
+            },
+            tooltip: {
+                callbacks: {
+                    afterBody: function (context) {
+                        //
+                        if (context[0].label === "Positive")
+                            return positiveAssessmentArray[context[0].dataIndex];
+                        else if (context[0].label === "Negative")
+                            return negativeAssessmentArray[context[0].dataIndex];
+                        else return mixedAssessmentArray[context[0].dataIndex];
+                    },
+                },
+            },
+        },
+    };
     return (
         <>
             <div className="chart-container ">
@@ -19,7 +63,7 @@ const Bubblecharts = ({ datapos, dataneg, options }) => {
                         <div className="chart-container">
                             <Bubble
                                 data={datapos}
-                                options={options}
+                                options={optionsBubble}
                             />
                         </div>
                         <h2>positives</h2>
@@ -29,7 +73,7 @@ const Bubblecharts = ({ datapos, dataneg, options }) => {
                         <div className="chart-container">
                             <Bubble
                                 data={dataneg}
-                                options={options}
+                                options={optionsBubble}
                             />
                         </div>
                         <h2>Negatives</h2>

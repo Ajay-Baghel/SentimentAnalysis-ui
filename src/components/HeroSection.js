@@ -319,7 +319,7 @@ const HeroSection = () => {
                 <div className='button-wrap'><Button buttonStyle={`${option === '1' ? 'btn--primary--solid' : 'btn--primary--outline'}`} onClick={(e) => setOption('1')}>Show Positives</Button></div>
                 <div className='button-wrap'><Button buttonStyle={`${option === '2' ? 'btn--primary--outline' : 'btn--primary--solid'}`} onClick={(e) => setOption('2')}>Show Negatives</Button></div>
             </div> */}
-            <Bubblecharts option={optionsBubble} dataneg={dataBubbleNeg} datapos={dataBubblePos} />
+            <Bubblecharts dataneg={dataBubbleNeg} datapos={dataBubblePos} />
 
             {/* Bubble chart ends here */}
 
