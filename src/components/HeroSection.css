@@ -62,3 +62,20 @@ h2 {
 .hero-btn .btn {
     margin: 6px;
 }
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f7f5f2;
+    border: 1px solid #d6d0c8;
+    border-radius: 10px;
+}
+
+.chart-container {
+    width: 60vw;
+    height: 65vh;
+    padding: 20px;
+
+    /* position: "relative"; */
+}
