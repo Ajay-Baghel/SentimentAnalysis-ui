@@ -16,15 +16,10 @@ const Bubblecharts = ({ datapos, dataneg }) => {
     const optionsBubble = {
         scales: {
             x: {
-                grid: {
-                    display: false,
-                },
+                display: false,
             },
             y: {
-                beginAtZero: true,
-                grid: {
-                    display: false,
-                },
+                display: false,
             },
         },
         maintainAspectRatio: false,
@@ -57,28 +52,30 @@ const Bubblecharts = ({ datapos, dataneg }) => {
     };
     return (
         <>
-            <div className="chart-container ">
-                <div className="content-wrap">
-                    {option === '1' && <div className="container">
-                        <div className="chart-container">
-                            <Bubble
-                                data={datapos}
-                                options={optionsBubble}
-                            />
-                        </div>
-                        <h2>positives</h2>
+            <div className="content-wrap">
+                {option === '1' && <div className="container">
+                    <div className="chart-container">
+                        <Bubble
+                            data={datapos}
+                            height="600px"
+                            width="800px"
+                            options={optionsBubble}
+                        />
+                    </div>
+                    <h2>positives</h2>
 
-                    </div >}
-                    {option === '2' && <div className="container">
-                        <div className="chart-container">
-                            <Bubble
-                                data={dataneg}
-                                options={optionsBubble}
-                            />
-                        </div>
-                        <h2>Negatives</h2>
-                    </div >}
-                </div>
+                </div >}
+                {option === '2' && <div className="container">
+                    <div className="chart-container">
+                        <Bubble
+                            data={dataneg}
+                            height="600px"
+                            width="800px"
+                            options={optionsBubble}
+                        />
+                    </div>
+                    <h2>Negatives</h2>
+                </div >}
             </div>
             <div className="option-wrap">
                 <div className='button-wrap'><Button buttonStyle={`${option === '1' ? 'btn--primary--solid' : 'btn--primary--outline'}`} onClick={(e) => setOption('1')}>Show Positives</Button></div>
