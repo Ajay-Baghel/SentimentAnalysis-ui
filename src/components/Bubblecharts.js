@@ -54,7 +54,7 @@ const Bubblecharts = ({ datapos, dataneg }) => {
         <>
             <div className="content-wrap">
                 {option === '1' && <div className="container">
-                    <div className="chart-container">
+                    <div className="chart-containerb">
                         <Bubble
                             data={datapos}
                             height="600px"
