@@ -1,0 +1,81 @@
+.hero-container {
+    background-color: #c3dbd9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    justify-content: start;
+}
+
+.hero-container > h1 {
+    color: black;
+    font-size: 50px;
+    margin: 10px;
+}
+
+h2 {
+    color: black;
+    font-size: 30px;
+    margin: 30px 20px 20px 10px;
+}
+
+.hero-container > p {
+    color: black;
+    font-size: 20px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+}
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 20px;
+}
+.upload-box {
+    font-size: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(130, 129, 129, 0.304);
+    width: auto;
+    outline: none;
+}
+::-webkit-file-upload-button {
+    color: #fff;
+    background: #005555;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+::-webkit-file-upload-button:hover {
+    transition: all 0.3s ease-out;
+    background: #7aaaa1;
+    color: #242424;
+    transition: 250ms;
+}
+
+.hero-btn {
+    margin-top: 32px;
+}
+
+.hero-btn .btn {
+    margin: 6px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f7f5f2;
+    border: 1px solid #d6d0c8;
+    border-radius: 10px;
+}
+
+.chart-container {
+    width: 60vw;
+    height: 70vh;
+    padding: 20px;
+
+    /* position: "relative"; */
+}
