@@ -56,6 +56,10 @@ const HeroSection = () => {
     "rgba(255, 26, 104, 0.7)",
     "rgba(54, 162, 235, 0.7)",
     "rgba(255, 206, 86, 0.7)",
+    "rgba(114, 187, 222, 0.8)",
+    "rgba(181, 134, 217, 0.8)",
+    "rgba(242, 129, 59, 0.8)",
+    "rgba(237, 46, 76, 0.8)",
   ];
 
   const data = {
@@ -205,27 +209,27 @@ const HeroSection = () => {
                 positivedata.push(ele.positive);
                 positivehashmap.has(ele.target)
                   ? positivehashmap.set(
-                      ele.target,
-                      positivehashmap.get(ele.target) + 1
-                    )
+                    ele.target,
+                    positivehashmap.get(ele.target) + 1
+                  )
                   : positivehashmap.set(ele.target, 1);
               } else if (ele.sentiment == "negative") {
                 res[1].push(ele.assessment + " " + ele.target);
                 negativedata.push(ele.negative);
                 negativehashmap.has(ele.target)
                   ? negativehashmap.set(
-                      ele.target,
-                      negativehashmap.get(ele.target) + 1
-                    )
+                    ele.target,
+                    negativehashmap.get(ele.target) + 1
+                  )
                   : negativehashmap.set(ele.target, 1);
               } else if (ele.sentiment == "mixed") {
                 res[2].push(ele.assessment + " " + ele.target);
                 neutraldata.push(ele.neutral);
                 mixedhashmap.has(ele.target)
                   ? mixedhashmap.set(
-                      ele.target,
-                      mixedhashmap.get(ele.target) + 1
-                    )
+                    ele.target,
+                    mixedhashmap.get(ele.target) + 1
+                  )
                   : mixedhashmap.set(ele.target, 1);
               }
             });
@@ -254,7 +258,7 @@ const HeroSection = () => {
               bubbledata.push({
                 label: positiveassesementarray[index],
                 value: value,
-                color: colors[0],
+                color: colors[Math.floor((Math.random() * 7) + 0)],
               });
             });
             setBubbleData(bubbledata);
@@ -393,18 +397,18 @@ const HeroSection = () => {
               positivedata.push(ele.positive);
               positivehashmap.has(ele.target)
                 ? positivehashmap.set(
-                    ele.target,
-                    positivehashmap.get(ele.target) + 1
-                  )
+                  ele.target,
+                  positivehashmap.get(ele.target) + 1
+                )
                 : positivehashmap.set(ele.target, 1);
             } else if (ele.sentiment == "negative") {
               res[1].push(ele.assessment + " " + ele.target);
               negativedata.push(ele.negative);
               negativehashmap.has(ele.target)
                 ? negativehashmap.set(
-                    ele.target,
-                    negativehashmap.get(ele.target) + 1
-                  )
+                  ele.target,
+                  negativehashmap.get(ele.target) + 1
+                )
                 : negativehashmap.set(ele.target, 1);
             } else if (ele.sentiment == "mixed") {
               res[2].push(ele.assessment + " " + ele.target);
@@ -465,7 +469,7 @@ const HeroSection = () => {
           id="uploadfile"
           //accept=".csv"
           onChange={changeHandler}
-          //onClick={loadData}
+        //onClick={loadData}
         />
         <div className="hero-btn">
           <Button onClick={loadData}>Submit</Button>
@@ -509,39 +513,9 @@ const HeroSection = () => {
       <h2>Sentiment wise assessment of targets</h2>
 
       {/* Bubble chart starts here */}
-      {/* <div className="content-wrap">
-                {option === '1' && <div className="container">
-                    <div className="chart-container">
-                        <Bubble
-                            ref={chartRefBubblePos}
-                            data={dataBubblePos}
-                            width="60px"
-                            height="60px"
-                            options={optionsBubble}
-                        />
-                    </div>
-                    <h2>positives</h2>
 
-                </div >}
-                {option === '2' && <div className="container">
-                    <div className="chart-container">
-                        <Bubble
-                            ref={chartRefBubbleNeg}
-                            data={dataBubbleNeg}
-                            width="60px"
-                            height="60px"
-                            options={optionsBubble}
-                        />
-                    </div>
-                    <h2>Negatives</h2>
-                </div >}
-            </div>
-            <div className="option-wrap">
-                <div className='button-wrap'><Button buttonStyle={`${option === '1' ? 'btn--primary--solid' : 'btn--primary--outline'}`} onClick={(e) => setOption('1')}>Show Positives</Button></div>
-                <div className='button-wrap'><Button buttonStyle={`${option === '2' ? 'btn--primary--outline' : 'btn--primary--solid'}`} onClick={(e) => setOption('2')}>Show Negatives</Button></div>
-            </div> */}
-      {/* <Bubblecharts dataneg={dataBubbleNeg} datapos={dataBubblePos} /> */}
-      <BubbleChart
+      <Bubblecharts dataneg={dataBubbleNeg} datapos={bubbleData} />
+      {/* <BubbleChart
         graph={{
           zoom: 1,
         }}
@@ -582,9 +556,9 @@ const HeroSection = () => {
         //   { label: "Marjoram", value: 7.72, color: "#6e6e51" },
         // ]}
         data={bubbleData}
-      />
+      /> */}
       {/* Bubble chart ends here */}
-    </div>
+    </div >
   );
 };
 

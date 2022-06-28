@@ -2,64 +2,34 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Bargraph.css";
 import "./Bubblechart.css";
 import { Bubble } from "react-chartjs-2";
+import BubbleChart from "@weknow/react-bubble-chart-d3";
 import { Chart as ChartJS, registerables } from "chart.js";
 import Button from "./Buttons/Button";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import useScreenSize from "use-screen-size";
+
 ChartJS.register(ChartDataLabels);
 ChartJS.register(...registerables);
 
 const Bubblecharts = ({ datapos, dataneg }) => {
     const [option, setOption] = useState('1');
-    const [positiveAssessmentArray, setPositiveAssessmentArray] = useState([]);
-    const [negativeAssessmentArray, setNegativeAssessmentArray] = useState([]);
-    const [mixedAssessmentArray, setMixedAssessmentArray] = useState([]);
-    const optionsBubble = {
-        scales: {
-            x: {
-                display: false,
-            },
-            y: {
-                display: false,
-            },
-        },
-        maintainAspectRatio: false,
-        responsive: true,
-        plugins: {
-            datalabels: {
-                font: {
-                    size: "10px",
-                    weight: "600",
-                },
-                formatter: (value, context) => {
-                    const textArray = value.company.replace(" ", "\n");
-                    return textArray.toString();
-                },
-                color: "black",
-            },
-            tooltip: {
-                callbacks: {
-                    afterBody: function (context) {
-                        //
-                        if (context[0].label === "Positive")
-                            return positiveAssessmentArray[context[0].dataIndex];
-                        else if (context[0].label === "Negative")
-                            return negativeAssessmentArray[context[0].dataIndex];
-                        else return mixedAssessmentArray[context[0].dataIndex];
-                    },
-                },
-            },
-        },
-    };
+    const size = useScreenSize();
     return (
         <>
             <div className="content-wrap">
                 {option === '1' && <div className="container">
                     <div className="chart-containerb">
-                        <Bubble
+                        <BubbleChart
+                            graph={{
+                                zoom: 0.9,
+                            }}
+                            // ref={Bubbleref}
+                            width={800}
+                            height={800}
+                            padding={5} // optional value, number that set the padding between bubbles
+                            showLegend={false} // optional value, pass false to disable the legend.
                             data={datapos}
-                            height="600px"
-                            width="800px"
-                            options={optionsBubble}
+                            overflow={false}
                         />
                     </div>
                     <h2>positives</h2>
@@ -67,12 +37,7 @@ const Bubblecharts = ({ datapos, dataneg }) => {
                 </div >}
                 {option === '2' && <div className="container">
                     <div className="chart-container">
-                        <Bubble
-                            data={dataneg}
-                            height="600px"
-                            width="800px"
-                            options={optionsBubble}
-                        />
+                        Hello
                     </div>
                     <h2>Negatives</h2>
                 </div >}
